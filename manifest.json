@@ -1,0 +1,10 @@
+{
+	"id": "travel-planner",
+	"name": "Travel Planner",
+	"version": "0.1.0",
+	"minAppVersion": "1.4.0",
+	"description": "Plan trips against your vault: build itineraries from place notes, prioritise and compare options, and assemble day plans. Pairs with Map View for the map itself.",
+	"author": "killermikeb",
+	"authorUrl": "https://github.com/killermikeb",
+	"isDesktopOnly": false
+}

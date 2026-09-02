@@ -1,0 +1,137 @@
+.ptp-view {
+	padding: 8px 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.ptp-header h3 {
+	margin: 0;
+}
+
+.ptp-trip-row {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+}
+
+.ptp-trip-row select {
+	flex: 1;
+}
+
+.ptp-trip-actions {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.ptp-tabs {
+	display: flex;
+	gap: 4px;
+	border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.ptp-tabs button {
+	background: none;
+	border: none;
+	box-shadow: none;
+	padding: 6px 10px;
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+}
+
+.ptp-tab-active {
+	border-bottom: 2px solid var(--interactive-accent) !important;
+	color: var(--text-normal);
+	font-weight: 600;
+}
+
+.ptp-body {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.ptp-actions {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.ptp-empty {
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+.ptp-list {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.ptp-item-row {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 6px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 4px;
+}
+
+.ptp-item-name {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ptp-icon-btn {
+	padding: 2px 6px;
+}
+
+.ptp-status-badge {
+	font-size: var(--font-smallest);
+	color: var(--text-muted);
+	padding: 0 6px;
+}
+
+.ptp-dayplan {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.ptp-dayplan-heading {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.ptp-dayplan-heading strong {
+	flex: 1;
+}
+
+.ptp-compare-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.ptp-compare-table th,
+.ptp-compare-table td {
+	border: 1px solid var(--background-modifier-border);
+	padding: 6px 8px;
+	text-align: left;
+}
+
+.ptp-compare-label {
+	font-weight: 600;
+	color: var(--text-muted);
+}
+
+.ptp-hidden {
+	display: none;
+}
