@@ -1,6 +1,6 @@
 import { ItemView, Notice, TFile, WorkspaceLeaf } from "obsidian";
 import type TravelPlannerPlugin from "../main";
-import { VaultIndex } from "../vaultIndex";
+import { VaultIndex, waitForFileMetadata } from "../vaultIndex";
 import { resolveWikilink, toWikilink } from "../links";
 import {
 	createDayPlanNote,
@@ -47,6 +47,8 @@ export class TravelPlannerView extends ItemView {
 	}
 
 	async onOpen(): Promise<void> {
+		this.registerEvent(this.app.metadataCache.on("changed", () => this.render()));
+		this.registerEvent(this.app.vault.on("delete", () => this.render()));
 		this.render();
 	}
 
@@ -83,6 +85,7 @@ export class TravelPlannerView extends ItemView {
 		tripRow.createEl("button", { text: "+ New trip" }).onclick = () => {
 			new NewTripModal(this.app, async (name, start, end) => {
 				const file = await createTripNote(this.app, this.plugin.settings, name, start, end);
+				await waitForFileMetadata(this.app, file);
 				this.selectedTripPath = file.path;
 				this.render();
 			}).open();
@@ -222,6 +225,7 @@ export class TravelPlannerView extends ItemView {
 				place,
 				nextPriority,
 			);
+			await waitForFileMetadata(this.app, file);
 			this.app.workspace.getLeaf(false).openFile(file);
 			this.render();
 		}).open();
@@ -262,6 +266,7 @@ export class TravelPlannerView extends ItemView {
 					tripTag,
 					date,
 				);
+				await waitForFileMetadata(this.app, file);
 				this.app.workspace.getLeaf(false).openFile(file);
 				this.render();
 			}).open();

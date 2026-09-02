@@ -1,4 +1,23 @@
 import { App, TFile } from "obsidian";
+
+/**
+ * `app.vault.create()` resolves once the file is written, but the metadata
+ * cache parses its frontmatter asynchronously afterwards — reading it back
+ * immediately (e.g. via VaultIndex) can still see no `ptp-type` for a
+ * moment. Await this right after creating a note before relying on it
+ * showing up in the index.
+ */
+export function waitForFileMetadata(app: App, file: TFile): Promise<void> {
+	if (app.metadataCache.getFileCache(file)?.frontmatter) return Promise.resolve();
+	return new Promise((resolve) => {
+		const ref = app.metadataCache.on("changed", (changed) => {
+			if (changed.path === file.path) {
+				app.metadataCache.offref(ref);
+				resolve();
+			}
+		});
+	});
+}
 import type {
 	DayPlanRecord,
 	ItineraryItemRecord,
